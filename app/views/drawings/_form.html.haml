@@ -1,0 +1,9 @@
+= form_for @drawing do |f|
+  - if @drawing.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@drawing.errors.count, "error")} prohibited this drawing from being saved:"
+      %ul
+        - @drawing.errors.full_messages.each do |msg|
+          %li= msg
+  .actions
+    = f.submit 'Draw'

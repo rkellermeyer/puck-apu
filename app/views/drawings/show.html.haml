@@ -1,0 +1,16 @@
+%p#notice= notice
+
+- (1..80).each_slice(10) do |numbers|
+  .row
+    .columns.medium-1
+    - numbers.map do |number|
+      - if @drawing.numbers.split(',').map(&:to_i).include?(number.to_i)
+        .columns.medium-1
+          %span.badge.success= number.to_i
+      - else
+        .columns.medium-1
+          %span= number.to_i
+    .columns.medium-1
+= link_to 'Edit', edit_drawing_path(@drawing)
+\|
+= link_to 'Back', drawings_path
